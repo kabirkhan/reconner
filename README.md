@@ -1,8 +1,5 @@
 <p align="center">
-  <a href="https://typer.tiangolo.com"><img src="https://typer.tiangolo.com/img/logo-margin/logo-margin-vector.svg" alt="Typer"></a>
-</p>
-<p align="center">
-    <em>Typer, build great CLIs. Easy to code. Based on Python type hints.</em>
+    <em>`nersights`, Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.</em>
 </p>
 <p align="center">
 <a href="https://travis-ci.com/tiangolo/typer" target="_blank">
@@ -18,256 +15,47 @@
 
 ---
 
-**Documentation**: <a href="https://typer.tiangolo.com" target="_blank">https://typer.tiangolo.com</a>
+**Documentation**: <a href="https://kabirkhan.github.io/nersights" target="_blank">https://kabirkhan.github.io/nersights</a>
 
-**Source Code**: <a href="https://github.com/tiangolo/typer" target="_blank">https://github.com/tiangolo/typer</a>
+**Source Code**: <a href="https://github.com/kabirkhan/nersights" target="_blank">https://github.com/kabirkhan/nersights</a>
 
 ---
 
-Typer is library to build <abbr title="command line interface, programs executed from a terminal">CLI</abbr> applications that users will love using and developers will love creating. Based on Python 3.6+ type hints.
-
-**Typer** is <a href="https://fastapi.tiangolo.com" class="external-link" target="_blank">FastAPI</a>'s little sibling. And it's intended to be the FastAPI of CLIs.
+`nersights` is a library to help you fix your annotated NER data and identify examples that are hardest for your model to predict so you can strategically prioritize the examples you annotate. 
 
 The key features are:
 
-* **Intuitive to write**: Great editor support. <abbr title="also known as auto-complete, autocompletion, IntelliSense">Completion</abbr> everywhere. Less time debugging. Designed to be easy to use and learn. Less time reading docs.
-* **Easy to use**: It's easy to use for the final users. Automatic help, and (optional) automatic completion for all shells.
-* **Short**: Minimize code duplication. Multiple features from each parameter declaration. Fewer bugs.
-* **Start simple**: The simplest example adds only 2 lines of code to your app: **1 import, 1 function call**.
-* **Grow large**: Grow in complexity as much as you want, create arbitrarily complex trees of commands and groups subcommands, with options and arguments.
+* **Data Validation and Cleanup**: Easily Validate the format of your NER data. Filter overlapping Entity Annotations, fix missing properties.
+* **Model Insights**: Analyze how well your model does on your Dataset. Identify the top errors your model is making so you can prioritize data collection and correction strategically.
+* **Model Insights**: Analyze how well your model does on your Dataset. Identify the top errors your model is making so you can prioritize data collection and correction strategically.
+* **Dataset Management**: `nersights` provides a `Dataset` class to manage the train/dev/test split of your data and apply the same functions across all splits in your data + a concatenation of all examples. Operate inplace to consistently transform your data.
+* **Serializable Dataset**: Serialize and Deserialize your data to and from JSON to the `nersights` type system. 
+* **Type Hints**: Comprehensive Typing system based on Python 3.6+ Type Hints
 
 ## Requirements
 
 Python 3.6+
 
-Typer stands on the shoulders of a giant. Its only internal dependency is <a href="https://click.palletsprojects.com/" class="external-link" target="_blank">Click</a>.
+Python 3.6+
+
+`nersights` is built on a few comprehensive, high-performing packages.
+
+* <a href="https://spacy.io" class="external-link" target="_blank">spaCy</a>
+* <a href="https://pydantic-docs.helpmanual.io/" class="external-link" target="_blank">Pydantic (Type system and JSON Serialization)</a>
+* <a href="https://typer.tiangolo.com" class="external-link" target="_blank">Typer (CLI)</a>.
+
 
 ## Installation
 
 <div class="termy">
 
 ```console
-$ pip install typer
+$ pip install nersights
 ---> 100%
-Successfully installed typer
+Successfully installed nersights
 ```
 
 </div>
-
-## Example
-
-### The absolute minimum
-
-* Create a file `main.py` with:
-
-```Python
-import typer
-
-
-def main(name: str):
-    typer.echo(f"Hello {name}")
-
-
-if __name__ == "__main__":
-    typer.run(main)
-```
-
-### Run it
-
-Run your application:
-
-<div class="termy">
-
-```console
-// Run your application
-$ python main.py
-
-// You get a nice error, you are missing NAME
-Usage: main.py [OPTIONS] NAME
-Try "main.py --help" for help.
-
-Error: Missing argument "NAME".
-
-// You get a --help for free
-$ python main.py --help
-
-Usage: main.py [OPTIONS] NAME
-
-Options:
-  --install-completion  Install completion for the current shell.
-  --show-completion     Show completion for the current shell, to copy it or customize the installation.
-  --help                Show this message and exit.
-
-// You get ✨ auto completion ✨ for free, installed with --install-completion
-
-// Now pass the NAME argument
-$ python main.py Camila
-
-Hello Camila
-
-// It works! 🎉
-```
-
-</div>
-
-## Example upgrade
-
-This was the simplest example possible.
-
-Now let's see one a bit more complex.
-
-### An example with two subcommands
-
-Modify the file `main.py`.
-
-Create a `typer.Typer()` app, and create two subcommands with their parameters.
-
-```Python hl_lines="3  6  11  20"
-import typer
-
-app = typer.Typer()
-
-
-@app.command()
-def hello(name: str):
-    typer.echo(f"Hello {name}")
-
-
-@app.command()
-def goodbye(name: str, formal: bool = False):
-    if formal:
-        typer.echo(f"Goodbye Ms. {name}. Have a good day.")
-    else:
-        typer.echo(f"Bye {name}!")
-
-
-if __name__ == "__main__":
-    app()
-```
-
-And that will:
-
-* Explicitly create a `typer.Typer` app.
-    * The previous `typer.run` actually creates one implicitly for you.
-* Add two subcommands with `@app.command()`.
-* Execute the `app()` itself, as if it was a function (instead of `typer.run`).
-
-### Run the upgraded example
-
-<div class="termy">
-
-```console
-// Check the --help
-$ python main.py --help
-
-Usage: main.py [OPTIONS] COMMAND [ARGS]...
-
-Options:
-  --install-completion  Install completion for the current shell.
-  --show-completion     Show completion for the current shell, to copy it or customize the installation.
-  --help                Show this message and exit.
-
-Commands:
-  goodbye
-  hello
-
-// You have 2 subcommands (the 2 functions): goodbye and hello
-
-// Now get the --help for hello
-
-$ python main.py hello --help
-
-Usage: main.py hello [OPTIONS] NAME
-
-Options:
-  --help  Show this message and exit.
-
-// And now get the --help for goodbye
-
-$ python main.py goodbye --help
-
-Usage: main.py goodbye [OPTIONS] NAME
-
-Options:
-  --formal / --no-formal
-  --help                  Show this message and exit.
-
-// Automatic --formal and --no-formal for the bool option 🎉
-
-// And if you use it with the hello command
-
-$ python main.py hello Camila
-
-Hello Camila
-
-// And with the goodbye command
-
-$ python main.py goodbye Camila
-
-Bye Camila!
-
-// And with --formal
-
-$ python main.py goodbye --formal Camila
-
-Goodbye Ms. Camila. Have a good day.
-```
-
-</div>
-
-### Recap
-
-In summary, you declare **once** the types of parameters (*arguments* and *options*) as function parameters.
-
-You do that with standard modern Python types.
-
-You don't have to learn a new syntax, the methods or classes of a specific library, etc.
-
-Just standard **Python 3.6+**.
-
-For example, for an `int`:
-
-```Python
-total: int
-```
-
-or for a `bool` flag:
-
-```Python
-force: bool
-```
-
-And similarly for **files**, **paths**, **enums** (choices), etc. And there are tools to create **groups of subcommands**, add metadata, extra **validation**, etc.
-
-**You get**: great editor support, including **completion** and **type checks** everywhere.
-
-**Your users get**: automatic **`--help`**, (optional) **autocompletion** in their terminal (Bash, Zsh, Fish, PowerShell).
-
-For a more complete example including more features, see the <a href="https://typer.tiangolo.com/tutorial/">Tutorial - User Guide</a>.
-
-## Optional Dependencies
-
-Typer uses <a href="https://click.palletsprojects.com/" class="external-link" target="_blank">Click</a> internally. That's the only dependency.
-
-But you can also install extras:
-
-* <a href="https://pypi.org/project/colorama/" class="external-link" target="_blank"><code>colorama</code></a>: and Click will automatically use it to make sure your terminal's colors always work correctly, even in Windows.
-    * Then you can use any tool you want to output your terminal's colors in all the systems, including the integrated `typer.style()` and `typer.secho()` (provided by Click).
-    * Or any other tool, e.g. <a href="https://pypi.org/project/wasabi/" class="external-link" target="_blank"><code>wasabi</code></a>, <a href="https://github.com/erikrose/blessings" class="external-link" target="_blank"><code>blessings</code></a>.
-* <a href="https://github.com/click-contrib/click-completion" class="external-link" target="_blank"><code>click-completion</code></a>: and Typer will automatically configure it to provide completion for all the shells, including installation commands.
-
-You can install `typer` with `colorama` and `click-completion` with `pip install typer[all]`.
-
-## Other tools and plug-ins
-
-Click has many plug-ins available that you can use. And there are many tools that help with command line applications that you can use as well, even if they are not related to Typer or Click.
-
-For example:
-
-* <a href="https://github.com/click-contrib/click-spinner" class="external-link" target="_blank"><code>click-spinner</code></a>: to show the user that you are loading data. A Click plug-in.
-    * There are several other Click plug-ins at <a href="https://github.com/click-contrib" class="external-link" target="_blank">click-contrib</a> that you can explore.
-* <a href="https://pypi.org/project/tabulate/" class="external-link" target="_blank"><code>tabulate</code></a>: to automatically display tabular data nicely. Independent of Click or typer.
-* etc... you can re-use many of the great available tools for building CLIs.
 
 ## License
 

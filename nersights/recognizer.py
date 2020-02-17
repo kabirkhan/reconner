@@ -73,9 +73,8 @@ class SpacyEntityRecognizer(EntityRecognizer):
             List of Examples constructed from spaCy Model predictions
         """
         examples: List[Example] = []
-        docs = nlp.pipe(texts)
 
-        for doc in docs:
+        for doc in self.nlp.pipe(texts):
             examples.append(Example(
                 text=doc.text,
                 spans=[TextSpanLabel(text=e.text,

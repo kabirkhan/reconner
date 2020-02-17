@@ -36,7 +36,7 @@ def fix_annotations_format(data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     for e in data:
         if 'meta' not in e:
             e['meta'] = {}
-        if isinstance(e['meta'], list):
+        if isinstance(e['meta'], list) or isinstance(e['meta'], str):
             e['meta'] = {
                 'source': e['meta']
             }

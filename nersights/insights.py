@@ -30,7 +30,7 @@ def ents_by_label(data: List[Example], use_lower: bool = True) -> DefaultDict[st
 
     for e in data:
         for s in e.spans:
-            span_text = s.text.lower() if lower else s.text
+            span_text = s.text.lower() if use_lower else s.text
             annotations[s.label].add(span_text)
 
     for label in annotations.keys():

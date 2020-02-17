@@ -21,7 +21,7 @@ def messy_data():
 def test_fix_annotations_format(messy_data):
     fixed_data = fix_annotations_format(messy_data)
 
-    assert fixed_data["spans"][0]['text'] == "Denver"
-    assert fixed_data["meta"] == {
+    assert fixed_data[0]["spans"][0]['text'] == "Denver"
+    assert fixed_data[0]["meta"] == {
         "source": "Cities Data"
     }

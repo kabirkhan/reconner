@@ -111,7 +111,7 @@ def remove_overlapping_entities(
     and follow the spacy format.
     """
     spacy_format_entities_without_overlap = []
-    current_overlapping_chain: List[Tuple[int, int, str]] = []
+    current_overlapping_chain: List[Dict[str, Any]] = []
     current_overlapping_chain_start = 0
     current_overlapping_chain_end = 0
     for i, current_entity in enumerate(sorted_spacy_format_entities):

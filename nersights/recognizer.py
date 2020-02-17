@@ -1,4 +1,5 @@
 from typing import List
+from pydantic import StrictStr
 from spacy.language import Language
 from .types import Example, TextSpanLabel
 
@@ -21,12 +22,12 @@ class EntityRecognizer:
         """
         raise NotImplementedError
 
-    def predict(self, texts: List[str]) -> List[Example]:
+    def predict(self, texts: List[StrictStr]) -> List[Example]:
         """Run model inference on a batch of raw texts.
         
         ### Parameters
         --------------
-        **texts**: (List[str]), required.
+        **texts**: (List[StrictStr]), required.
             Raw text examples
         
         ### Raises
@@ -59,12 +60,12 @@ class SpacyEntityRecognizer(EntityRecognizer):
         """
         return self.nlp.get_pipe('ner').labels
 
-    def predict(self, texts: List[str]) -> List[Example]:
+    def predict(self, texts: List[StrictStr]) -> List[Example]:
         """Run spaCy nlp.pipe on a batch of raw texts.
         
         ### Parameters
         --------------
-        **texts**: (List[str]), required.
+        **texts**: (List[StrictStr]), required.
             Raw text examples
         
         ### Returns

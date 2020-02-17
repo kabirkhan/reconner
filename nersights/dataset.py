@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import Any, Callable, Dict, List
 from .types import Example
 
 
@@ -22,14 +22,14 @@ class Dataset:
                 'all': train + dev + test
             })
 
-    def apply(self, func, *args, **kwargs):
+    def apply(self, func: Callable, *args: Any, **kwargs: Any) -> Dict[str, List[Example]]:
         """Apply an existing function to all datasets"""
         res = {}
         for k, dataset in self.datasets.items():
             res[k] = func(dataset, *args, **kwargs)
         return res
     
-    def apply_(self, func, *args, **kwargs):
+    def apply_(self, func: Callable, *args: Any, **kwargs: Any) -> None:
         """Apply an existing function to all datasets inplace
         and update self.datasets"""
         res = {}

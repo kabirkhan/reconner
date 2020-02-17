@@ -1,12 +1,14 @@
 from collections import defaultdict
-from typing import Dict, List
+from typing import Any, DefaultDict, Dict, List, Optional
 import srsly
 
 from .constants import NONE
 from .types import Example
 
 
-def ner_stats(data: List[Example], serialize: bool = False, no_print: bool = False) -> List[Example]:
+def ner_stats(data: List[Example],
+              serialize: bool = False,
+              no_print: bool = False) -> Optional[List[Example]]:
     """Compute statistics for NER data
     
     ### Parameters
@@ -23,8 +25,8 @@ def ner_stats(data: List[Example], serialize: bool = False, no_print: bool = Fal
     (List[Example]): 
         List of examples or string if serialize and no_print are both True
     """    
-    labels = defaultdict(int)
-    examples = defaultdict(list)
+    labels: DefaultDict[str, Any] = defaultdict(int)
+    examples: DefaultDict[str, Any] = defaultdict(list)
     n_examples_no_entities = 0
     for e in data:
         if not e.spans:

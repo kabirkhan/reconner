@@ -26,7 +26,8 @@ def ents_by_label(data: List[Example], use_lower: bool = True) -> DefaultDict[st
         DefaultDict mapping label to sorted list of the unique
         spans annotated for that label.
     """    
-    annotations = defaultdict(set)
+    annotations: DefaultDict[str, Set[str]] = defaultdict(set)
+    sorted_annotations: DefaultDict[str, List[str]] = defaultdict(list)
 
     for e in data:
         for s in e.spans:
@@ -34,9 +35,9 @@ def ents_by_label(data: List[Example], use_lower: bool = True) -> DefaultDict[st
             annotations[s.label].add(span_text)
 
     for label in annotations.keys():
-        annotations[label] = sorted(annotations[label])
+        sorted_annotations[label] = sorted(annotations[label])
 
-    return annotations
+    return sorted_annotations
 
 
 def get_label_disparities(data: List[Example],
@@ -60,8 +61,7 @@ def get_label_disparities(data: List[Example],
         Set of all unique text spans that overlap between label1 and label2
     """    
     annotations = ents_by_label(data, use_lower=use_lower)
-    if label1 and label2:
-        return set(annotations[label1]).intersection(set(annotations[label2]))
+    return set(annotations[label1]).intersection(set(annotations[label2]))
 
 
 def top_prediction_errors(ner: EntityRecognizer,
@@ -94,10 +94,10 @@ def top_prediction_errors(ner: EntityRecognizer,
     """    
 
     labels_ = labels or ner.labels
-    texts = [e.text for e in data]
-    anns = [e.spans for e in data]
+    texts = (e.text for e in data)
+    anns = (e.spans for e in data)
     
-    errors = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+    errors: DefaultDict[str, DefaultDict[str, DefaultDict[str, int]]] = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
 
     for pred, ann in zip(ner.predict(texts), anns):
         

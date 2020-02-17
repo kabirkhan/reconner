@@ -1,0 +1,6 @@
+[run]
+
+source =
+    nersights
+    
+parallel = True

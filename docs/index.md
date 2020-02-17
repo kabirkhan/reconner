@@ -2,14 +2,14 @@
     <em>`nersights`, Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.</em>
 </p>
 <p align="center">
-<a href="https://travis-ci.com/tiangolo/typer" target="_blank">
-    <img src="https://travis-ci.com/tiangolo/typer.svg?branch=master" alt="Build Status">
+<a href="https://dev.azure.com/kabirkhan1137/nersights/_build" target="_blank">
+    <img src="https://dev.azure.com/kabirkhan1137/nersights/_apis/build/status/kabirkhan.nersights?branchName=master" alt="Build Status">
 </a>
-<a href="https://codecov.io/gh/tiangolo/typer" target="_blank">
-    <img src="https://codecov.io/gh/tiangolo/typer/branch/master/graph/badge.svg" alt="Coverage">
+<a href="https://codecov.io/gh/kabirkhan/nersights">
+  <img src="https://codecov.io/gh/kabirkhan/nersights/branch/master/graph/badge.svg" alt="Coverage"/>
 </a>
-<a href="https://pypi.org/project/typer" target="_blank">
-    <img src="https://badge.fury.io/py/typer.svg" alt="Package version">
+<a href="https://pypi.org/project/nersights" target="_blank">
+    <img src="https://badge.fury.io/py/nersights.svg" alt="Package version">
 </a>
 </p>
 

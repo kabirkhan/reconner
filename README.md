@@ -1,5 +1,5 @@
 <p align="center">
-    <em>`reconer`, Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.</em>
+    <em>RecoNER, Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.</em>
 </p>
 <p align="center">
 <a href="https://dev.azure.com/kabirkhan1137/reconer/_build" target="_blank">

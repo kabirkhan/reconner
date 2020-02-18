@@ -58,7 +58,14 @@ class SpacyEntityRecognizer(EntityRecognizer):
         (List[str]): 
             List of labels from spaCy ner pipe
         """
-        return self.nlp.get_pipe('ner').labels
+        all_labels = set()
+
+        for pipe in ['ner', 'entity_ruler']:
+            if self.nlp.has_pipe(pipe):
+                all_labels = all_labels | set(self.nlp.get_pipe(pipe).labels)
+
+        return sorted(list(all_labels))
+
 
     def predict(self, texts: List[StrictStr]) -> List[Example]:
         """Run spaCy nlp.pipe on a batch of raw texts.

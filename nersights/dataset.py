@@ -1,5 +1,7 @@
+from pathlib import Path
 from typing import Any, Callable, Dict, List
-from .types import Example
+from nersights.loaders import read_jsonl, read_json
+from nersights.types import Example
 
 
 class Dataset:
@@ -21,18 +23,42 @@ class Dataset:
                 'test': test,
                 'all': train + dev + test
             })
+    
+    @classmethod
+    def from_disk(cls, path: Path, loader_func: Callable = read_jsonl):
+        """Load Dataset from disk given a directory with files 
+        named explicitly train.jsonl, dev.jsonl, and test.jsonl
+        
+        ### Parameters
+        --------------
+        **path**: (Path), required.
+            directory to load from
+        **loader_func**: (Callable, optional), Defaults to read_jsonl.
+            Loader function (TODO: Make this a bit more generic)
+        """
+        return Dataset(
+            loader_func(path / 'train.jsonl'),
+            loader_func(path / 'dev.jsonl'),
+            test=loader_func(path / 'test.jsonl')
+        )
 
-    def apply(self, func: Callable, *args: Any, **kwargs: Any) -> Dict[str, List[Example]]:
-        """Apply an existing function to all datasets"""
+    def apply(self,
+              func: Callable[[List[Example]], Any],
+              *args: Any,
+              **kwargs: Any) -> Dict[str, List[Example]]:
+        """Apply an existing function to all datasets
+        
+        ### Parameters
+        --------------
+        **func**: (Callable[[List[Example]], Any]), required.
+            Function from an existing nersights module that can operate on a List of Examples
+        
+        ### Returns
+        -----------
+        (Dict[str, List[Example]]): 
+            Dictionary mapping dataset names to List[Example], same as the internal datasets property
+        """
         res = {}
         for k, dataset in self.datasets.items():
             res[k] = func(dataset, *args, **kwargs)
         return res
-    
-    def apply_(self, func: Callable, *args: Any, **kwargs: Any) -> None:
-        """Apply an existing function to all datasets inplace
-        and update self.datasets"""
-        res = {}
-        for k, dataset in self.datasets.items():
-            res[k] = func(dataset, *args, **kwargs)
-        self.datasets = res

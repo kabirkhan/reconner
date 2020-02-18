@@ -21,7 +21,7 @@
 
 ---
 
-`reconer` is a library to help you fix your annotated NER data and identify examples that are hardest for your model to predict so you can strategically prioritize the examples you annotate. 
+RecoNER is a library to help you fix your annotated NER data and identify examples that are hardest for your model to predict so you can strategically prioritize the examples you annotate. 
 
 The key features are:
 
@@ -38,7 +38,7 @@ Python 3.6+
 
 Python 3.6+
 
-`reconer` is built on a few comprehensive, high-performing packages.
+`RecoNER` is built on a few comprehensive, high-performing packages.
 
 * <a href="https://spacy.io" class="external-link" target="_blank">spaCy</a>
 * <a href="https://pydantic-docs.helpmanual.io/" class="external-link" target="_blank">Pydantic (Type system and JSON Serialization)</a>

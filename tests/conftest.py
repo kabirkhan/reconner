@@ -2,9 +2,9 @@ from pathlib import Path
 from typing import Dict, List
 import pytest
 from spacy.lang.en import English
-from nersights.loaders import read_jsonl
-from nersights.types import Example
-from nersights.stats import ner_stats
+from reconer.loaders import read_jsonl
+from reconer.types import Example
+from reconer.stats import ner_stats
 
 
 @pytest.fixture()

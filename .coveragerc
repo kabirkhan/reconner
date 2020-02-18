@@ -1,6 +1,6 @@
 [run]
 
 source =
-    nersights
+    reconer
     
 parallel = True

@@ -1,6 +1,6 @@
-site_name: nersights
+site_name: reconer
 site_description: Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.
-site_url: https://kabirkhan.github.com/nersights
+site_url: https://kabirkhan.github.com/reconer
 
 theme:
     name: 'material'
@@ -10,9 +10,9 @@ theme:
     logo: 'img/icon-white.svg'
     favicon: 'img/favicon.png'
 
-repo_name: 'kabirkhan/nersights'
-repo_url: 'https://github.com/kabirkhan/nersights'
-edit_uri: 'https://github.com/kabirkhan/nersights'
+repo_name: 'kabirkhan/reconer'
+repo_url: 'https://github.com/kabirkhan/reconer'
+edit_uri: 'https://github.com/kabirkhan/reconer'
 
 nav:
     - Introduction: 'index.md'
@@ -41,7 +41,7 @@ markdown_extensions:
 extra:
     social:
         - type: 'github'
-          link: 'https://github.com/kabirkhan/nersights'
+          link: 'https://github.com/kabirkhan/reconer'
         - type: 'twitter'
           link: 'https://twitter.com/kabir_khan14'
 

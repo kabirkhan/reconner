@@ -1,4 +1,4 @@
-from nersights.stats import ner_stats
+from reconer.stats import ner_stats
 
 
 def test_ner_stats(example_data):

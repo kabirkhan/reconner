@@ -1,4 +1,4 @@
-"""Typer, build great CLIs. Easy to code. Based on Python type hints."""
+"""RecoNER, Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data."""
 
 __version__ = "0.0.1"
 

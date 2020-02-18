@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Any, Callable, Dict, List
-from nersights.loaders import read_jsonl, read_json
-from nersights.types import Example
+from reconer.loaders import read_jsonl, read_json
+from reconer.types import Example
 
 
 class Dataset:
@@ -51,7 +51,7 @@ class Dataset:
         ### Parameters
         --------------
         **func**: (Callable[[List[Example]], Any]), required.
-            Function from an existing nersights module that can operate on a List of Examples
+            Function from an existing reconer module that can operate on a List of Examples
         
         ### Returns
         -----------

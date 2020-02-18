@@ -1,6 +1,6 @@
 from pathlib import Path
-from nersights.dataset import Dataset
-from nersights.stats import ner_stats
+from reconer.dataset import Dataset
+from reconer.stats import ner_stats
 
 
 def test_dataset_initialize(example_data):

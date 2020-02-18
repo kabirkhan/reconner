@@ -1,5 +1,5 @@
 import pytest
-from nersights.recognizer import *
+from reconer.recognizer import *
 
 
 def test_base_recognizer(test_texts):

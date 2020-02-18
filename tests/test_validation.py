@@ -1,6 +1,6 @@
 import pytest
-from nersights.types import Example, TextSpanLabel
-from nersights.validation import *
+from reconer.types import Example, TextSpanLabel
+from reconer.validation import *
 
 
 @pytest.fixture()

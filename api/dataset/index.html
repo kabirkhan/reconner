@@ -439,7 +439,15 @@ on all the datasets in sequence.</p>
 <div class="autodoc">
 <div class="autodoc-signature"><em>class </em><code>reconer.<strong>Dataset</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">train</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">dev</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">test=None</em><span class="autodoc-punctuation">)</span></div>
 <div class="autodoc-docstring"><p>Container for a full dataset with train/dev/test splits.
-Used to apply core functions to all datasets at once.</p></div>
+Used to apply core functions to all datasets at once.</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<hr />
+<p><strong>train</strong>: (List[Example]), required.
+    List of Examples for <strong>train</strong> set
+<strong>dev</strong>: (List[Example]), required.
+    List of Examples for <strong>dev</strong> set
+<strong>test</strong>: (List[Example], optional), Defaults to None.
+    List of Examples for <strong>test</strong> set</p></div>
 <div class="autodoc-members">
 <div class="autodoc-signature"><code><strong>apply</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">self</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">func</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">*args</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">**kwargs</em><span class="autodoc-punctuation">)</span></div>
 <div class="autodoc-docstring"><p>Apply an existing function to all datasets</p>
@@ -451,7 +459,7 @@ Used to apply core functions to all datasets at once.</p></div>
 <hr />
 <p>(Dict[str, List[Example]]):
     Dictionary mapping dataset names to List[Example], same as the internal datasets property</p></div>
-<div class="autodoc-signature"><code><strong>from_disk</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">path</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">loader_func=<function read_jsonl at 0x7f0af78ea158></em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-signature"><code><strong>from_disk</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">path</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">loader_func=<function read_jsonl at 0x7f9c4ec5a158></em><span class="autodoc-punctuation">)</span></div>
 <div class="autodoc-docstring"><p>Load Dataset from disk given a directory with files
 named explicitly train.jsonl, dev.jsonl, and test.jsonl</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>

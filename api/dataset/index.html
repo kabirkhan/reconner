@@ -442,32 +442,47 @@ on all the datasets in sequence.</p>
 Used to apply core functions to all datasets at once.</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <hr />
-<p><strong>train</strong>: (List[Example]), required.
-    List of Examples for <strong>train</strong> set
-<strong>dev</strong>: (List[Example]), required.
-    List of Examples for <strong>dev</strong> set
-<strong>test</strong>: (List[Example], optional), Defaults to None.
-    List of Examples for <strong>test</strong> set</p></div>
+<p><strong>train</strong>: (List[Example]), required.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">List of Examples for <strong>train</strong> set</span>
+</code></pre></div>
+
+
+<p><strong>dev</strong>: (List[Example]), required.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">List of Examples for <strong>dev</strong> set</span>
+</code></pre></div>
+
+
+<p><strong>test</strong>: (List[Example], optional), Defaults to None.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">List of Examples for <strong>test</strong> set</span>
+</code></pre></div></div>
 <div class="autodoc-members">
 <div class="autodoc-signature"><code><strong>apply</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">self</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">func</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">*args</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">**kwargs</em><span class="autodoc-punctuation">)</span></div>
 <div class="autodoc-docstring"><p>Apply an existing function to all datasets</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <hr />
-<p><strong>func</strong>: (Callable[[List[Example]], Any]), required.
-    Function from an existing reconer module that can operate on a List of Examples</p>
+<p><strong>func</strong>: (Callable[[List[Example]], Any]), required.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Function from an existing reconer module that can operate on a List of Examples</span>
+</code></pre></div>
+
+
 <h3 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h3>
 <hr />
-<p>(Dict[str, List[Example]]):
-    Dictionary mapping dataset names to List[Example], same as the internal datasets property</p></div>
-<div class="autodoc-signature"><code><strong>from_disk</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">path</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">loader_func=<function read_jsonl at 0x7f9c4ec5a158></em><span class="autodoc-punctuation">)</span></div>
+<p>(Dict[str, List[Example]]):</p>
+<div class="codehilite"><pre><span></span><code><span class="k">Dictionary</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="n">dataset</span><span class="w"> </span><span class="k">names</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">Example</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">internal</span><span class="w"> </span><span class="n">datasets</span><span class="w"> </span><span class="n">property</span><span class="w"></span>
+</code></pre></div></div>
+<div class="autodoc-signature"><code><strong>from_disk</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">path</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">loader_func=<function read_jsonl at 0x7fc20ad5a158></em><span class="autodoc-punctuation">)</span></div>
 <div class="autodoc-docstring"><p>Load Dataset from disk given a directory with files
 named explicitly train.jsonl, dev.jsonl, and test.jsonl</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <hr />
-<p><strong>path</strong>: (Path), required.
-    directory to load from
-<strong>loader_func</strong>: (Callable, optional), Defaults to read_jsonl.
-    Loader function (TODO: Make this a bit more generic)</p></div>
+<p><strong>path</strong>: (Path), required.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">directory to load from</span>
+</code></pre></div>
+
+
+<p><strong>loader_func</strong>: (Callable, optional), Defaults to read_jsonl.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Loader function (TODO: Make this a bit more generic)</span>
+</code></pre></div></div>
 </div>
 </div>
                 

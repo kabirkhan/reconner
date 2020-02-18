@@ -443,53 +443,90 @@ You can read more about the <code>EntityRecognizer</code> class here: <a href=".
 <div class="autodoc-docstring"><p>Get a dictionary of unique text spans by label for your data</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <hr />
-<p><strong>data</strong>: (List[Example]), required.
-    List of Examples
-<strong>use_lower</strong>: (bool, optional), Defaults to True.
-    Use the lowercase form of the span text</p>
+<p><strong>data</strong>: (List[Example]), required.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">List of Examples</span>
+</code></pre></div>
+
+
+<p><strong>use_lower</strong>: (bool, optional), Defaults to True.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Use the lowercase form of the span text</span>
+</code></pre></div>
+
+
 <h3 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h3>
 <hr />
-<p>(DefaultDict[str, List[str]]):
-    DefaultDict mapping label to sorted list of the unique
-    spans annotated for that label.</p></div>
+<p>(DefaultDict[str, List[str]]):</p>
+<div class="codehilite"><pre><span></span><code><span class="n">DefaultDict</span> <span class="n">mapping</span> <span class="n">label</span> <span class="k">to</span> <span class="n">sorted</span> <span class="n">list</span> <span class="k">of</span> <span class="n">the</span> <span class="k">unique</span>
+
+<span class="n">spans</span> <span class="n">annotated</span> <span class="k">for</span> <span class="n">that</span> <span class="n">label</span><span class="p">.</span>
+</code></pre></div></div>
 </div>
 <div class="autodoc">
 <div class="autodoc-signature"><code>reconer.insights.<strong>get_label_disparities</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">data</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">label1</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">label2</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">use_lower=True</em><span class="autodoc-punctuation">)</span></div>
 <div class="autodoc-docstring"><p>Identify annotated spans that have different labels in different examples</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <hr />
-<p><strong>data</strong>: (List[Example]), required.
-    Input List of Examples
-<strong>label1</strong>: (str), required.
-    First label to compare
-<strong>label2</strong>: (str), required.
-    Second label to compare</p>
+<p><strong>data</strong>: (List[Example]), required.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Input List of Examples</span>
+</code></pre></div>
+
+
+<p><strong>label1</strong>: (str), required.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">First label to compare</span>
+</code></pre></div>
+
+
+<p><strong>label2</strong>: (str), required.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Second label to compare</span>
+</code></pre></div>
+
+
 <h3 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h3>
 <hr />
-<p>(Set[str]):
-    Set of all unique text spans that overlap between label1 and label2</p></div>
+<p>(Set[str]):</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Set of all unique text spans that overlap between label1 and label2</span>
+</code></pre></div></div>
 </div>
 <div class="autodoc">
 <div class="autodoc-signature"><code>reconer.insights.<strong>top_prediction_errors</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">ner</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">data</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">labels=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">k=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">exclude_fp=False</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">exclude_fn=False</em><span class="autodoc-punctuation">)</span></div>
 <div class="autodoc-docstring"><p>Get a sorted list of examples your model is worst at predicting.</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <hr />
-<p><strong>ner</strong>: (EntityRecognizer), required.
-    An instance of EntityRecognizer
-<strong>data</strong>: (List[Example]), required.
-    List of annotated Examples
-<strong>labels</strong>: (List[str], optional), Defaults to None.
-    List of labels to get errors for. Defaults to the labels property of <code>ner</code>.
-<strong>k</strong>: (int, optional), Defaults to None.
-    If set, return the top k prediction errors, otherwise the whole list.
-<strong>exclude_fp</strong>: (bool, optional), Defaults to False.
-    Flag to exclude False Positive errors.
-<strong>exclude_fn</strong>: (bool, optional), Defaults to False.
-    Flag to exclude False Negative errors.</p>
+<p><strong>ner</strong>: (EntityRecognizer), required.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">An instance of EntityRecognizer</span>
+</code></pre></div>
+
+
+<p><strong>data</strong>: (List[Example]), required.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">List of annotated Examples</span>
+</code></pre></div>
+
+
+<p><strong>labels</strong>: (List[str], optional), Defaults to None.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">List</span> <span class="n">of</span> <span class="n">labels</span> <span class="k">to</span> <span class="n">get</span> <span class="n">errors</span> <span class="k">for</span><span class="p">.</span> <span class="n">Defaults</span> <span class="k">to</span> <span class="n">the</span> <span class="n">labels</span> <span class="n">property</span> <span class="n">of</span> <span class="ss"><code>ner</code></span><span class="p">.</span>
+</code></pre></div>
+
+
+<p><strong>k</strong>: (int, optional), Defaults to None.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">If set, return the top k prediction errors, otherwise the whole list.</span>
+</code></pre></div>
+
+
+<p><strong>exclude_fp</strong>: (bool, optional), Defaults to False.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Flag to exclude False Positive errors.</span>
+</code></pre></div>
+
+
+<p><strong>exclude_fn</strong>: (bool, optional), Defaults to False.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Flag to exclude False Negative errors.</span>
+</code></pre></div>
+
+
 <h3 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h3>
 <hr />
-<p>(List[PredictionError]):
-    [description]</p></div>
+<p>(List[PredictionError]):</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">description</span><span class="o">]</span><span class="w"></span>
+</code></pre></div></div>
 </div>
                 
                   

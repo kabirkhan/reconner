@@ -93,6 +93,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#reconerdatasetdataset" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -276,10 +280,41 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Dataset
+      </label>
     
     <a href="./" title="Dataset" class="md-nav__link md-nav__link--active">
       Dataset
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -356,6 +391,37 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -364,9 +430,38 @@
                   <a href="https://github.com/kabirkhan/reconer/api/dataset.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Dataset</h1>
-                
-                
+                <h1 id="reconerdatasetdataset"><code>reconer.dataset.Dataset</code><a class="headerlink" href="#reconerdatasetdataset" title="Permanent link">&para;</a></h1>
+<p><code>reconer.dataset.Dataset</code> is a container to run other <code>reconer</code> operations across your train/dev/test split
+The <code>reconer.dataset.Dataset.apply</code> function takes any of the other reconer functions and runs them
+on all the datasets in sequence.</p>
+<hr />
+<h2 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<div class="autodoc">
+<div class="autodoc-signature"><em>class </em><code>reconer.<strong>Dataset</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">train</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">dev</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">test=None</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Container for a full dataset with train/dev/test splits.
+Used to apply core functions to all datasets at once.</p></div>
+<div class="autodoc-members">
+<div class="autodoc-signature"><code><strong>apply</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">self</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">func</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">*args</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">**kwargs</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Apply an existing function to all datasets</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<hr />
+<p><strong>func</strong>: (Callable[[List[Example]], Any]), required.
+    Function from an existing reconer module that can operate on a List of Examples</p>
+<h3 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h3>
+<hr />
+<p>(Dict[str, List[Example]]):
+    Dictionary mapping dataset names to List[Example], same as the internal datasets property</p></div>
+<div class="autodoc-signature"><code><strong>from_disk</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">path</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">loader_func=<function read_jsonl at 0x7f0af78ea158></em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Load Dataset from disk given a directory with files
+named explicitly train.jsonl, dev.jsonl, and test.jsonl</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<hr />
+<p><strong>path</strong>: (Path), required.
+    directory to load from
+<strong>loader_func</strong>: (Callable, optional), Defaults to read_jsonl.
+    Loader function (TODO: Make this a bit more generic)</p></div>
+</div>
+</div>
                 
                   
                 

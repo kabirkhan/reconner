@@ -1,6 +1,6 @@
 [run]
 
 source =
-    reconer
+    reconner
     
 parallel = True

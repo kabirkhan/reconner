@@ -1,6 +1,6 @@
 import pytest
-from reconer.types import Example, TextSpanLabel
-from reconer.validation import *
+from reconner.types import Example, TextSpanLabel
+from reconner.validation import *
 
 
 @pytest.fixture()

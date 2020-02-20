@@ -1,5 +1,5 @@
 import pytest
-from reconer.recognizer import *
+from reconner.recognizer import *
 
 
 def test_base_recognizer(test_texts):
